@@ -1,0 +1,11 @@
+autojump
+bridge-utils
+libreoffice-extension-languagetool
+nerd-fonts-complete-starship
+snapper-gui-git
+terminator
+timeshift
+ttf-gentium-basic
+ttf-meslo
+ttf-ms-fonts
+ 

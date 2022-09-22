@@ -1,0 +1,10 @@
+discord
+flameshot
+gparted
+htop
+kitty
+timeshift
+variety
+veracrypt
+vim
+winehq
