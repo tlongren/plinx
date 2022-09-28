@@ -1,0 +1,54 @@
+# TODO:
+
+## Fix:
+## General:
+
+- add qemu
+- create the scripts except fedora
+- Package install check + finish
+- FIX my_shell
+
+---
+
+### Desktop Enviorments:
+- add them
+- gnome: Tweaks, shell-exten (+ autoinst ext) + settings
+- kde: konsave
+
+---
+---
+## Flatpaks:
+- com.usebottles.bottles
+- com.brave.Browser
+- com.discordapp.Discord
+- com.mattjakeman.ExtensionManager
+- de.haeckerfelix.Fragments
+- io.github.shiftey.Desktop
+- org.gimp.GIMP
+- org.kde.kwrite
+- org.libreoffice.LibreOffice
+- net.lutris.Lutris
+- org.kde.okular
+- com.spotify.Client
+- org.mozilla.Thunderbird
+
+## Normal Packages:
+- code
+- flameshot
+- gparted
+- htop
+- kitty
+- timeshift
+- variety
+- veracrypt
+- vim
+- winehq
+
+## Gnome:
+- tweaks
+- chrome-browser-extension
+##### Extension:
+- tray icons
+- clipman
+- GS Connect
+

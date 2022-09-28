@@ -10,3 +10,5 @@ org.kde.okular
 com.spotify.Client
 org.mozilla.Thunderbird
 com.visualstudio.code
+com.mattjakeman.ExtensionManager
+

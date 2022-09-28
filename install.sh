@@ -33,12 +33,12 @@ sys (){
 fonts(){
     FONT_INSTALLED=$(fc-list | grep -i "Meslo");
     if ! [ "$FONT_INSTALLED" ]; then
-        curl -s https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest \
+        sudo curl -s https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest \
         |   grep "Meslo.zip" \
         |   cut -d : -f 2,3 \
         |   tr -d \" \
         |   wget -qi -
-        unzip Meslo.zip -d /usr/share/fonts
+        sudo -s unzip Meslo.zip -d /usr/share/fonts
         # Reloading Font
         fc-cache -vf
         rm ./Meslo.zip
@@ -47,15 +47,15 @@ fonts(){
     fi
     FONT_INSTALLED=$(fc-list | grep -i "Fira Code");
     if ! [ "$FONT_INSTALLED" ]; then
-        curl -s https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest \
+        sudo -s curl -s https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest \
         |   grep "FiraCode.zip" \
         |   cut -d : -f 2,3 \
         |   tr -d \" \
         |   wget -qi -
-        unzip Meslo.zip -d /usr/share/fonts
+        sudo unzip FiraCode.zip -d /usr/share/fonts
         # Reloading Font
         fc-cache -vf
-        rm ./Meslo.zip
+        rm ./FiraCode.zip
     else
         :
     fi
@@ -125,7 +125,6 @@ export SCRIPT_DIR
 
 logo
 sys
-#konsa
-#shell
+shell
 logo2
 del
