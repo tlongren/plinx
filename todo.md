@@ -1,23 +1,28 @@
 # TODO:
 
 ## Fix:
+
 ## General:
 
 - add qemu
-- create the scripts except fedora
+<!-- - create the scripts except fedora -->
 - Package install check + finish
 - FIX my_shell
 
 ---
 
 ### Desktop Enviorments:
+
 - add them
-- gnome: Tweaks, shell-exten (+ autoinst ext) + settings
+- gnome: Tweaks, shell-exten (+ autoinst ext) + settings + konsave alternative
 - kde: konsave
 
 ---
+
 ---
+
 ## Flatpaks:
+
 - com.usebottles.bottles
 - com.brave.Browser
 - com.discordapp.Discord
@@ -33,6 +38,7 @@
 - org.mozilla.Thunderbird
 
 ## Normal Packages:
+
 - code
 - flameshot
 - gparted
@@ -45,10 +51,12 @@
 - winehq
 
 ## Gnome:
+
 - tweaks
 - chrome-browser-extension
+
 ##### Extension:
+
 - tray icons
 - clipman
 - GS Connect
-
