@@ -1,5 +1,4 @@
 curl
-discord
 flameshot
 gparted
 htop
@@ -8,4 +7,3 @@ timeshift
 variety
 veracrypt
 vim
-winehq

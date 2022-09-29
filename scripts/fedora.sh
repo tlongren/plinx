@@ -30,30 +30,6 @@ numlock(){
     esac
 }
 
-cursor(){
-    echo -ne "
-        Do you want to use the future-black-cursor?
-    "
-    echo -ne "
-        1) Yes
-        0) No
-    Choose an option: "
-    read -r answer
-    case ${answer} in
-        1)
-            sudo cp -r ${SCRIPT_DIR}/configs/Future-black-cursors /usr/share/icons
-            echo '[Icon Theme]' | sudo tee /usr/share/icons/default/index.theme
-            echo 'Inherits=Future-black Cursors' | sudo tee -a /usr/share/icons/default/index.theme
-        ;;
-        0)
-        ;;
-        *)
-            echo "Please only use 1 or 0"
-            cursor
-        ;;
-    esac
-}
-
 installtype() {
     echo -ne "
         Do you want to install all the Programms?
@@ -87,7 +63,7 @@ installtype() {
             cat ${SCRIPT_DIR}/pkgs/flatpaks.txt | while read line
             do
                 echo "INSTALLING Flatpak's: ${line}"
-               flatpak install -y --noninteractive flathub ${line}
+                flatpak install -y --noninteractive flathub ${line}
             done
             #give flatpak access to themes
             sudo flatpak override --filesystem=~/.themes
@@ -97,7 +73,7 @@ installtype() {
             cat ${SCRIPT_DIR}/pkgs/flatpaks.txt | while read line
             do
                 echo "INSTALLING Flatpak's: ${line}"
-               flatpak install -y --noninteractive flathub ${line}
+                flatpak install -y --noninteractive flathub ${line}
             done
             #give flatpak access to themes
             sudo flatpak override --filesystem=~/.themes
@@ -118,15 +94,14 @@ installtype() {
                 echo "INSTALLING: ${line}"
                 sudo dnf -y install ${line}
             done
-        0)
-        ;;
-        *)
-            echo "Please only use 1 or 0"
-            installtype
-        ;;
+            0)
+            ;;
+            *)
+                echo "Please only use 1 or 0"
+                installtype
+            ;;
     esac
 }
 
 numlock
-cursor
 installtype

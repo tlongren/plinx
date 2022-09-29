@@ -20,10 +20,13 @@ logo () {
 
 sys (){
     if [ -x "$(command -v pacman)" ];then
+        yay -Syu
         bash ${SCRIPT_DIR}/scripts/arch.sh
         elif [ -x "$(command -v dnf)" ];then
+        sudo dnf -y upgrade --refresh
         bash ${SCRIPT_DIR}/scripts/fedora.sh
         elif [ -x "$(command -v apt-get)" ];then
+        sudo apt-get -y update && sudo apt-get -y upgrade
         bash ${SCRIPT_DIR}/scripts/debian.sh
     else
         echo 'This Distro is not supported!'
@@ -59,6 +62,30 @@ fonts(){
     else
         :
     fi
+}
+
+cursor(){
+    echo -ne "
+       Do you want to use the future-black-cursor?
+    "
+    echo -ne "
+       1) Yes
+       0) No
+    Choose an option: "
+    read -r answer
+    case ${answer} in
+        1)
+            sudo cp -r ${SCRIPT_DIR}/configs/Future-black-cursors /usr/share/icons
+            echo '[Icon Theme]' | sudo tee /usr/share/icons/default/index.theme
+            echo 'Inherits=Future-black Cursors' | sudo tee -a /usr/share/icons/default/index.theme
+        ;;
+        0)
+        ;;
+        *)
+            echo "Please only use 1 or 0"
+            cursor
+        ;;
+    esac
 }
 
 shell(){
@@ -125,6 +152,8 @@ export SCRIPT_DIR
 
 logo
 sys
+fonts
+cursor
 shell
 logo2
 del

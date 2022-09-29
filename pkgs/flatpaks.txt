@@ -11,4 +11,5 @@ com.spotify.Client
 org.mozilla.Thunderbird
 com.visualstudio.code
 com.mattjakeman.ExtensionManager
+com.discordapp.Discord
 

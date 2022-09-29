@@ -5,9 +5,6 @@
 ## General:
 
 - add qemu
-<!-- - create the scripts except fedora -->
-- Package install check + finish
-- FIX my_shell
 
 ---
 
@@ -36,10 +33,10 @@
 - org.kde.okular
 - com.spotify.Client
 - org.mozilla.Thunderbird
+- com.visualstudio.code
 
 ## Normal Packages:
 
-- code
 - flameshot
 - gparted
 - htop
