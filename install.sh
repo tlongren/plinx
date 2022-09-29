@@ -97,6 +97,14 @@ shell(){
     clear
 }
 
+qemu(){
+    git clone https://github.com/floork/my_qemu
+    cd my_qemu
+    bash "install.sh"
+    cd $SCRIPT_DIR
+    clear
+}
+
 logo2(){
     echo -ne "
 
@@ -155,5 +163,6 @@ sys
 fonts
 cursor
 shell
+qemu
 logo2
 del
