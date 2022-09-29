@@ -1,13 +1,6 @@
 # TODO:
 
 ## Fix:
-
-## General:
-
-- add qemu
-
----
-
 ### Desktop Enviorments:
 
 - add them
