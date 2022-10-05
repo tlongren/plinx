@@ -1,5 +1,5 @@
 
-![plinx logo](img/logo.png)
+![plinx logo](img/logo_transparent.png)
 
 **Usage**
 ---
