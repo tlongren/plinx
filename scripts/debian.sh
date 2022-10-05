@@ -74,10 +74,41 @@ installtype() {
             #give flatpak access to themes
             sudo flatpak override --filesystem=~/.themes
         ;;
+        2)
+            # install flatpak
+            flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+            cat ${SCRIPT_DIR}/pkgs/flatpaks.txt | while read line
+            do
+                echo "INSTALLING Flatpak's: ${line}"
+                flatpak install -y --noninteractive flathub ${line}
+            done
+            #give flatpak access to themes
+            sudo flatpak override --filesystem=~/.themes
+        ;;
+        3)
+            # install Discord
+            sudo apt -y install gdebi-core wget
+            wget -O ~/discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
+            sudo gdebi ~/discord.deb
+            sudo rm ~/discord.deb
+            # get veracrypt Repo
+            sudo add-apt-repository ppa:unit193/encryption
+            # install wine
+            sudo wget -nc -O /usr/share/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+            sudo wget -nc -P /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/focal/winehq-focal.sources
+            sudo apt update -y
+            sudo apt install --install-recommends winehq-stable
+            # install normal packages
+            cat ${SCRIPT_DIR}/pkgs/debian.txt | while read line
+            do
+                echo "INSTALLING: ${line}"
+                sudo apt-get -y install ${line}
+            done
+        ;;
         0)
         ;;
         *)
-            echo "Please only use 1 or 0"
+            echo "Please only the number 0 to 3"
             installtype
         ;;
     esac

@@ -94,12 +94,13 @@ installtype() {
                 echo "INSTALLING: ${line}"
                 sudo dnf -y install ${line}
             done
-            0)
-            ;;
-            *)
-                echo "Please only use 1 or 0"
-                installtype
-            ;;
+        ;;
+        0)
+        ;;
+        *)
+            echo "Please only the number 0 to 3"
+            installtype
+        ;;
     esac
 }
 

@@ -20,12 +20,24 @@ logo () {
 
 sys (){
     if [ -x "$(command -v pacman)" ];then
-        yay -Syu
-        bash ${SCRIPT_DIR}/scripts/arch.sh
-        elif [ -x "$(command -v dnf)" ];then
+        if (-x "$(command -v yay)");then
+            yay -Syu
+            bash ${SCRIPT_DIR}/scripts/arch.sh
+        else
+            # install yay (AUR helper)
+            sudo pacman -Syu
+            sudo pacman -S --noconfirm --needed git base-devel
+            git clone https://aur.archlinux.org/yay-bin.git
+            cd yay-bin
+            makepkg -si
+            # go on with the normal script
+            yay -Syu
+            bash ${SCRIPT_DIR}/scripts/arch.sh
+        fi
+    elif [ -x "$(command -v dnf)" ];then
         sudo dnf -y upgrade --refresh
         bash ${SCRIPT_DIR}/scripts/fedora.sh
-        elif [ -x "$(command -v apt-get)" ];then
+    elif [ -x "$(command -v apt-get)" ];then
         sudo apt-get -y update && sudo apt-get -y upgrade
         bash ${SCRIPT_DIR}/scripts/debian.sh
     else
@@ -34,6 +46,8 @@ sys (){
 }
 
 fonts(){
+    echo "Checking and installing Meslo and FiraCode Font"
+    sleep 5s
     FONT_INSTALLED=$(fc-list | grep -i "Meslo");
     if ! [ "$FONT_INSTALLED" ]; then
         sudo curl -s https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest \
@@ -89,20 +103,56 @@ cursor(){
 }
 
 shell(){
-    curl -sS https://starship.rs/install.sh | sh
-    git clone https://github.com/floork/my_shell
-    cd my_shell
-    bash "install.sh"
-    cd $SCRIPT_DIR
-    clear
+    echo -ne "
+       Do you want to install a custom Shell?
+    "
+    echo -ne "
+       1) Yes
+       0) No
+    Choose an option: "
+    read -r answer
+    case ${answer} in
+        1)
+            curl -sS https://starship.rs/install.sh | sh
+            git clone https://github.com/floork/my_shell
+            cd my_shell
+            bash "install.sh"
+            cd $SCRIPT_DIR
+            clear
+        ;;
+        0)
+        ;;
+        *)
+            echo "Please only use 1 or 0"
+            shell
+        ;;
+    esac
 }
 
 qemu(){
-    git clone https://github.com/floork/my_qemu
-    cd my_qemu
-    bash "install.sh"
-    cd $SCRIPT_DIR
-    clear
+    echo -ne "
+       Do you want to install Qemu?
+    "
+    echo -ne "
+       1) Yes
+       0) No
+    Choose an option: "
+    read -r answer
+    case ${answer} in
+        1)
+            git clone https://github.com/floork/my_qemu
+            cd my_qemu
+            bash "install.sh"
+            cd $SCRIPT_DIR
+            clear
+        ;;
+        0)
+        ;;
+        *)
+            echo "Please only use 1 or 0"
+            qemu
+        ;;
+    esac
 }
 
 logo2(){
