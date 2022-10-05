@@ -1,53 +1,10 @@
 # TODO:
 
 ## Fix:
-
 ### Desktop Enviorments:
 
 - add them
-- gnome: Tweaks, shell-exten (+ autoinst ext) + settings + konsave alternative
+- gnome: Tweaks, shell-exten (+ autoinst ext) + settings + konsave alternative (lösung[evtl. https://askubuntu.com/questions/984205/how-to-save-gnome-settings-in-a-file oder https://search.brave.com/search?q=save+gnome+configs&source=web])
 - kde: konsave
 
 ---
-
----
-
-## Flatpaks:
-
-- com.usebottles.bottles
-- com.brave.Browser
-- com.discordapp.Discord
-- com.mattjakeman.ExtensionManager
-- de.haeckerfelix.Fragments
-- io.github.shiftey.Desktop
-- org.gimp.GIMP
-- org.kde.kwrite
-- org.libreoffice.LibreOffice
-- net.lutris.Lutris
-- org.kde.okular
-- com.spotify.Client
-- org.mozilla.Thunderbird
-- com.visualstudio.code
-
-## Normal Packages:
-
-- flameshot
-- gparted
-- htop
-- kitty
-- timeshift
-- variety
-- veracrypt
-- vim
-- winehq
-
-## Gnome:
-
-- tweaks
-- chrome-browser-extension
-
-##### Extension:
-
-- tray icons
-- clipman
-- GS Connect

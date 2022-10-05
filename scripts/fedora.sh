@@ -43,29 +43,30 @@ installtype() {
     read -r install_type
     case ${install_type} in
         1)
-            ## Get the Repos and Keys
-            #veracrypt
-            sudo dnf -y install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-            #wine
+            # Get the Repos and Keys
+            ##veracrypt
+            sudo dnf install \
+            wget https://launchpad.net/veracrypt/trunk/1.25.9/+download/veracrypt-1.25.9-CentOS-8-x86_64.rpm
+            ##wine
             sudo dnf -y install dnf-plugins-core
             sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/35/winehq.repo
             wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
             chmod +x winetricks
             sudo mv winetricks /usr/local/bin/
-            ## install the packages
+            # install the packages
             cat ${SCRIPT_DIR}/pkgs/fedora.txt | while read line
             do
                 echo "INSTALLING: ${line}"
                 sudo dnf -y install ${line}
             done
-            ## install flatpaks
+            # install flatpaks
             flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
             cat ${SCRIPT_DIR}/pkgs/flatpaks.txt | while read line
             do
                 echo "INSTALLING Flatpak's: ${line}"
                 flatpak install -y --noninteractive flathub ${line}
             done
-            #give flatpak access to themes
+            ##give flatpak access to themes
             sudo flatpak override --filesystem=~/.themes
         ;;
         2)

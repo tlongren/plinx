@@ -1,5 +1,6 @@
 com.usebottles.bottles
 com.brave.Browser
+com.discordapp.Discord
 de.haeckerfelix.Fragments
 io.github.shiftey.Desktop
 org.gimp.GIMP
