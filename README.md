@@ -1,4 +1,4 @@
-![plinx logo](img/logo_transparent.png)
+![plinx logo](logo.png)
 
 ## Usage
 
