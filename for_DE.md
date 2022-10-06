@@ -28,8 +28,22 @@ gnome(){
     read -r kon
     case ${kon} in
         1)
-            # load settings
-            dconf load / < dconf-settings.ini
+        if [ -x "$(command -v pacman)" ];then
+            if (-x "$(command -v yay)");then
+                yay -S -- noconfirm gnome-tweaks
+            else
+                echo "ERROR: yay is not installed"
+            fi
+        elif [ -x "$(command -v dnf)" ];then
+            sudo dnf -y install gnome-tweaks
+        elif [ -x "$(command -v apt-get)" ];then
+            sudo apt-get -y install gnome-tweaks
+        else
+            echo 'This Distro is not supported!'
+        fi
+
+        # load settings
+        dconf load / < dconf-settings.ini
         ;;
         0)
         ;;
