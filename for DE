@@ -1,0 +1,14 @@
+# ONLY FOR GNOME
+
+## FLATPAK
+
+com.mattjakeman.ExtensionManager
+org.gnome.Extensions
+
+## NORMAL
+
+gnome-tweaks
+
+# ONLY FOR KDE
+
+konsave

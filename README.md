@@ -12,20 +12,22 @@ bash install.sh
 
 ## Flatpaks
 
-- com.usebottles.bottles
 - com.brave.Browser
 - com.discordapp.Discord
+- com.mattjakeman.ExtensionManager
+- com.spotify.Client
+- com.usebottles.bottles
+- com.visualstudio.code
 - de.haeckerfelix.Fragments
 - io.github.shiftey.Desktop
-- org.gimp.GIMP
-- org.kde.kwrite
-- org.libreoffice.LibreOffice
 - net.lutris.Lutris
+- org.gimp.GIMP
+- org.gnome.Extensions
+- org.kde.kwrite
 - org.kde.okular
-- com.spotify.Client
+- org.libreoffice.LibreOffice
 - org.mozilla.Thunderbird
-- com.visualstudio.code
-- com.mattjakeman.ExtensionManager
+
 
 ## Normal Packages
 
@@ -43,13 +45,16 @@ bash install.sh
 ## Gnome
 
 - tweaks
-- chrome-browser-extension
+- extensions
+- extension-manager
 
 ### Extension
 
-- tray icons
 - clipman
+- emoji selector
 - GS Connect
+- open weather
+- tray icons: reloaded
 
 ## **What is plinx**
 
