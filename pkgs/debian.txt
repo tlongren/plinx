@@ -1,5 +1,6 @@
 curl
 flameshot
+flatpak
 gparted
 htop
 kitty

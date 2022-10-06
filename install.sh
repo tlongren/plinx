@@ -35,10 +35,10 @@ sys (){
             yay -Syu
             bash ${SCRIPT_DIR}/scripts/arch.sh
         fi
-    elif [ -x "$(command -v dnf)" ];then
+        elif [ -x "$(command -v dnf)" ];then
         sudo dnf -y upgrade --refresh
         bash ${SCRIPT_DIR}/scripts/fedora.sh
-    elif [ -x "$(command -v apt-get)" ];then
+        elif [ -x "$(command -v apt-get)" ];then
         sudo apt-get -y update && sudo apt-get -y upgrade
         bash ${SCRIPT_DIR}/scripts/debian.sh
     else
@@ -156,6 +156,107 @@ qemu(){
     esac
 }
 
+which_DE(){
+    echo -ne "
+    Which Desktop Enviorment do you use?
+    Do you use:"
+    echo -ne "
+        1) Gnome
+        2) Kde
+        0) None of these
+    Choose an option:  "
+    read -r de
+    case ${de} in
+        1)
+            gnome
+        ;;
+        2)
+            konsa
+        ;;
+        0)
+        ;;
+        *)
+            echo "Please only the numbers 0 to 2"
+            which_DE
+        ;;
+    esac
+}
+
+
+gnome(){
+    echo -ne "
+    Do you want to install my Gnome Configs?"
+    echo -ne "
+        1) ALL
+        0) Do nothing
+    Choose an option:  "
+    read -r kon
+    case ${kon} in
+        1)
+            if [ -x "$(command -v pacman)" ];then
+                if (-x "$(command -v yay)");then
+                    yay -S -- noconfirm gnome-tweaks
+                else
+                    echo "ERROR: yay is not installed"
+                fi
+                elif [ -x "$(command -v dnf)" ];then
+                sudo dnf -y install gnome-tweaks
+                elif [ -x "$(command -v apt-get)" ];then
+                sudo apt-get -y install gnome-tweaks
+            else
+                echo 'This Distro is not supported!'
+            fi
+            flatpak install -y --noninteractive flathub com.mattjakeman.ExtensionManager
+        ;;
+        0)
+        ;;
+        *)
+            echo "Please only use 1 or 0"
+            gnome
+        ;;
+    esac
+}
+
+konsa(){
+    echo -ne "
+    Do you want to install my KDE Configs?"
+    echo -ne "
+        1) ALL
+        0) Do nothing
+    Choose an option:  "
+    read -r kon
+    case ${kon} in
+        1)
+            if [ -x "$(command -v pacman)" ];then
+                if (-x "$(command -v yay)");then
+                    yay -S -- noconfirm python-pip
+                else
+                    echo "ERROR: yay is not installed"
+                fi
+                elif [ -x "$(command -v dnf)" ];then
+                sudo dnf -y install python-pip
+                elif [ -x "$(command -v apt-get)" ];then
+                sudo apt-get -y install python-pip
+            else
+                echo 'This Distro is not supported!'
+            fi
+            sudo cp -r ${SCRIPT_DIR}/configs/.config/* ~/.config/
+            sudo cp ${SCRIPT_DIR}/configs/index.theme /usr/share/icons/default/
+            sudo cp ${SCRIPT_DIR}/configs/settings.ini ${HOME}/.config/gtk-3.0/
+            python -m pip install konsave
+            konsave -i ${SCRIPT_DIR}/configs/kde.knsv
+            sleep 1
+            konsave -a kde
+        ;;
+        0)
+        ;;
+        *)
+            echo "Please only use 1 or 0"
+            konsa
+        ;;
+    esac
+}
+
 logo2(){
     echo -ne "
 
@@ -211,6 +312,7 @@ export SCRIPT_DIR
 
 logo
 sys
+which_DE
 fonts
 cursor
 shell
