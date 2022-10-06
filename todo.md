@@ -1,15 +1,4 @@
-# TODO
+# TODO LISTE
 
-## Fix
-
-### Gnome
-
-### Kde
-
-- konsave
-
-### other
-
-- add them
-
----
+- clean the configs
+- myBackground
