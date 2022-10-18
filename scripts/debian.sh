@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo "Coming soon!"
-exit
-
 numlock(){
     echo -ne "
        Do you want to use Numlockx?
