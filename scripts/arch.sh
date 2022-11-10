@@ -43,36 +43,23 @@ installtype() {
     read -r install_type
     case ${install_type} in
         1)
-            cat ${SCRIPT_DIR}/pkgs/aur-pkgs.txt | while read line
-            do
-                echo "INSTALLING: ${line}"
-                yay -S --noconfirm --needed ${line}
-            done
+            # install yay pkgs
+            for item in ${aur_pkgs[*]}; do yay -S --noconfirm --needed ${item}; done
+            # install flatpaks
             flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-            cat ${SCRIPT_DIR}/pkgs/flatpaks.txt | while read line
-            do
-                echo "INSTALLING Flatpak's: ${line}"
-                flatpak install -y --noninteractive flathub ${line}
-            done
+            for item in ${flatpaks[*]}; do flatpak install -y --noninteractive flathub ${item}; done
             #give flatpak access to themes
             sudo flatpak override --filesystem=~/.themes
         ;;
         2)
             flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-            cat ${SCRIPT_DIR}/pkgs/flatpaks.txt | while read line
-            do
-                echo "INSTALLING Flatpak's: ${line}"
-                flatpak install -y --noninteractive flathub ${line}
-            done
+            for item in ${flatpaks[*]}; do flatpak install -y --noninteractive flathub ${item}; done
             #give flatpak access to themes
             sudo flatpak override --filesystem=~/.themes
         ;;
         3)
             cat ${SCRIPT_DIR}/pkgs/aur-pkgs.txt | while read line
-            do
-                echo "INSTALLING Yay-Packages: ${line}"
-                yay -S --noconfirm --needed ${line}
-            done
+            for item in ${aur_pkgs[*]}; do yay -S --noconfirm --needed ${item}; done
         ;;
         0)
         ;;

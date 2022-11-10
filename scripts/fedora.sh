@@ -54,28 +54,16 @@ installtype() {
             chmod +x winetricks
             sudo mv winetricks /usr/local/bin/
             # install the packages
-            cat ${SCRIPT_DIR}/pkgs/fedora.txt | while read line
-            do
-                echo "INSTALLING: ${line}"
-                sudo dnf -y install ${line}
-            done
+            for item in ${fedora_pkgs[*]}; do sudo dnf -y install ${item}; done
             # install flatpaks
             flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-            cat ${SCRIPT_DIR}/pkgs/flatpaks.txt | while read line
-            do
-                echo "INSTALLING Flatpak's: ${line}"
-                flatpak install -y --noninteractive flathub ${line}
-            done
+            for item in ${flatpaks[*]}; do flatpak install -y --noninteractive flathub ${item}; done
             ##give flatpak access to themes
             sudo flatpak override --filesystem=~/.themes
         ;;
         2)
             flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-            cat ${SCRIPT_DIR}/pkgs/flatpaks.txt | while read line
-            do
-                echo "INSTALLING Flatpak's: ${line}"
-                flatpak install -y --noninteractive flathub ${line}
-            done
+            for item in ${flatpaks[*]}; do flatpak install -y --noninteractive flathub ${item}; done
             #give flatpak access to themes
             sudo flatpak override --filesystem=~/.themes
         ;;
@@ -90,11 +78,7 @@ installtype() {
             chmod +x winetricks
             sudo mv winetricks /usr/local/bin/
             ## install the packages
-            cat ${SCRIPT_DIR}/pkgs/fedora.txt | while read line
-            do
-                echo "INSTALLING: ${line}"
-                sudo dnf -y install ${line}
-            done
+            for item in ${fedora_pkgs[*]}; do sudo dnf -y install ${item}; done
         ;;
         0)
         ;;

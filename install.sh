@@ -1,6 +1,10 @@
 #!/bin/bash
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+aur_pkgs=(curl discord flameshot flatpak gparted htop kitty timeshift variety veracrypt vim winehq)
+debian_pkgs=(curl flameshot flatpak gparted htop kitty timeshift variety veracrypt vim)
+fedora_pkgs=(curl discord flameshot flatpak gparted htop kitty timeshift variety veracrypt-1.25.9-CentOS-8-x86_64.rpm vim winehq)
+flatpaks=(com.brave.Browser com.github.tchx84.Flatseal com.spotify.Client com.usebottles.bottles de.haeckerfelix.Fragments io.github.shiftey.Desktop net.lutris.Lutris org.gimp.GIMP org.kde.kwrite org.kde.okular org.libreoffice.LibreOffice org.mozilla.Thunderbird)
 
 logo () {
     echo -ne "
@@ -308,7 +312,7 @@ del(){
     esac
 }
 
-export SCRIPT_DIR
+export SCRIPT_DIR aur_pkgs debian_pkgs fedora_pkgs flatpaks
 
 logo
 sys
