@@ -22,17 +22,17 @@ logo () {
 sys (){
     if [ -x "$(command -v pacman)" ];then
         if (-x "$(command -v yay)");then
-            yay -Syu
+            yay -Syu --noconfirm
             bash ${SCRIPT_DIR}/scripts/arch.sh
         else
             # install yay (AUR helper)
-            sudo pacman -Syu
+            sudo pacman -Syu --noconfirm
             sudo pacman -S --noconfirm --needed git base-devel
             git clone https://aur.archlinux.org/yay-bin.git
             cd yay-bin
             makepkg -si
             # go on with the normal script
-            yay -Syu
+            yay -Syu --noconfirm
             bash ${SCRIPT_DIR}/scripts/arch.sh
         fi
         elif [ -x "$(command -v dnf)" ];then
@@ -286,13 +286,13 @@ del(){
     read -r delt
     case ${delt} in
         1)
-            rm -r ${SCRIPT_DIR}
+            sudo rm -r ${SCRIPT_DIR}
             echo "Your System will Reboot in 5 seconds"
             sleep 5s
             sudo reboot -h now
         ;;
         2)
-            rm -r ${SCRIPT_DIR}
+            sudo rm -r ${SCRIPT_DIR}
         ;;
         3)
             echo "Your System will Reboot in 5 seconds"
