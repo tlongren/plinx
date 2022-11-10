@@ -229,14 +229,14 @@ konsa(){
         1)
             if [ -x "$(command -v pacman)" ];then
                 if (-x "$(command -v yay)");then
-                    yay -S -- noconfirm python-pip
+                    yay -S -- noconfirm python-pip latte-dock
                 else
                     echo "ERROR: yay is not installed"
                 fi
                 elif [ -x "$(command -v dnf)" ];then
-                sudo dnf -y install python-pip
+                sudo dnf -y install python-pip latte-dock
                 elif [ -x "$(command -v apt-get)" ];then
-                sudo apt-get -y install python-pip
+                sudo apt-get -y install python-pip latte-dock
             else
                 echo 'This Distro is not supported!'
             fi
