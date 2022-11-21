@@ -32,7 +32,7 @@ numlock(){
 
 installtype() {
     echo -ne "
-        Do you want to install all the Programms?
+        Do you want to install all the programs?
     "
     echo -ne "
         1) Yes
