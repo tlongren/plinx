@@ -1,5 +1,13 @@
 #!/bin/bash
 
+speedUpDNF(){
+    echo "# add for speed" | sudo tee -a /etc/dnf/dnf.conf
+    echo "fastesmirror=True" | sudo tee -a /etc/dnf/dnf.conf
+    echo "max_parallel_downloads=10" | sudo tee -a /etc/dnf/dnf.conf
+    echo "defaulttypes=True" | sudo tee -a /etc/dnf/dnf.conf
+    echo "keepcache=True" | sudo tee -a /etc/dnf/dnf.conf
+}
+
 numlock(){
     echo -ne "
         Do you want to use Numlockx?
@@ -45,14 +53,35 @@ installtype() {
         1)
             # Get the Repos and Keys
             ##veracrypt
-            sudo dnf install \
+            sudo dnf -y install \
             wget https://launchpad.net/veracrypt/trunk/1.25.9/+download/veracrypt-1.25.9-CentOS-8-x86_64.rpm
             ##wine
             sudo dnf -y install dnf-plugins-core
-            sudo dnf config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/35/winehq.repo
+            sudo dnf -y config-manager --add-repo https://dl.winehq.org/wine-builds/fedora/35/winehq.repo
             wget  https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks
             chmod +x winetricks
             sudo mv winetricks /usr/local/bin/
+            # install VSCode
+            sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+            sudo cat <<EOF | sudo tee /etc/yum.repos.d/vscode.repo
+[code]
+name=Visual Studio Code
+baseurl=https://packages.microsoft.com/yumrepos/vscode
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+EOF
+            sudo dnf check-update
+            # install rpmfusion
+            sudo dnf -y install \
+            https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+            sudo dnf -y install \
+            https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+            # install media codecs
+            sudo dnf -y groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
+            sudo dnf -y groupupdate sound-and-video
+            # set hostname
+            sudo hostnamectl set-hostname fedora
             # install the packages
             for item in ${fedora_pkgs[*]}; do sudo dnf -y install ${item}; done
             # install flatpaks
@@ -88,6 +117,6 @@ installtype() {
         ;;
     esac
 }
-
+speedUpDNF
 numlock
 installtype
