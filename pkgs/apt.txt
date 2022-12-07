@@ -1,0 +1,10 @@
+curl
+flameshot
+flatpak
+gparted
+htop
+kitty
+timeshift
+variety
+veracrypt
+vim

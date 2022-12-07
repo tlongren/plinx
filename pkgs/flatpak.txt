@@ -1,0 +1,12 @@
+com.brave.Browser
+com.github.tchx84.Flatseal
+com.spotify.Client
+com.usebottles.bottles
+de.haeckerfelix.Fragments
+io.github.shiftey.Desktop
+net.lutris.Lutris
+org.gimp.GIMP
+org.kde.kwrite
+org.kde.okular
+org.libreoffice.LibreOffice
+org.mozilla.Thunderbird

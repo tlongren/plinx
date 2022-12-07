@@ -1,0 +1,12 @@
+code
+curl
+discord
+flameshot
+flatpak
+gparted
+htop
+kitty
+timeshift
+variety
+veracrypt-1.25.9-CentOS-8-x86_64.rpm
+vim winehq
