@@ -69,5 +69,3 @@ installtype() {
         ;;
     esac
 }
-
-for word in $(read -r todo.md); do echo "$word"; done
