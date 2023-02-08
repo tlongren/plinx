@@ -46,13 +46,13 @@ installtype() {
         # install yay pkgs
         while read -r line; do yay -S --noconfirm --needed "$line"; done <./../pkgs/aur.txt
         # install flatpaks
-        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
         while read -r line; do flatpak install -y --noninteractive flathub "$line"; done <./../pkgs/flatpaks.txt
         #give flatpak access to themes
         sudo flatpak override --filesystem=~/.themes
         ;;
     2)
-        flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
         while read -r line; do flatpak install -y --noninteractive flathub "$line"; done <./../pkgs/flatpaks.txt
         #give flatpak access to themes
         sudo flatpak override --filesystem=~/.themes
