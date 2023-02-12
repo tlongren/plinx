@@ -1,0 +1,10 @@
+curl
+flatpak
+gparted
+htop
+kitty
+lxappearance
+thunar
+timeshift
+variety
+vim

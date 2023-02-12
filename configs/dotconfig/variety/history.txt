@@ -1,0 +1,17 @@
+0
+/home/floork/Pictures/wallpapers/ign-0002.png
+/home/floork/Pictures/wallpapers/ign_unsplash5.png
+/home/floork/Pictures/wallpapers/ign_unsplash4.png
+/home/floork/Pictures/wallpapers/nord_scenary.png
+/home/floork/Pictures/wallpapers/ign-0011.png
+/home/floork/Pictures/wallpapers/ign_unsplash41.png
+/home/floork/Pictures/wallpapers/ign_gunshot.png
+/home/floork/Pictures/wallpapers/nord_naruto_2.png
+/home/floork/Pictures/wallpapers/ign_colorful.png
+/home/floork/Pictures/wallpapers/gnu-linux.png
+/home/floork/Pictures/wallpapers/ign_unsplash23.png
+/home/floork/Pictures/wallpapers/ign_unsplash43.png
+/home/floork/Pictures/wallpapers/ign_endeavour3.png
+/home/floork/Pictures/wallpapers/ign_colorful.png
+/home/floork/.config/variety/Downloaded/flickr_user_www_flickr_com_photos_peter_levi__user_id_93647178_N00_/7527793782_e90d55c3a0_o.jpg
+/usr/share/backgrounds/gnome/adwaita-l.webp

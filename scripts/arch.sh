@@ -1,6 +1,6 @@
 #!/bin/bash
 
-numlock() {
+numlock(){
     echo -ne "
         Do you want to use Numlockx?
     "
@@ -10,29 +10,29 @@ numlock() {
     Choose an option: "
     read -r numlockx
     case ${numlockx} in
-    1)
-        echo -ne "
+        1)
+            echo -ne "
         -------------------------------------------------------------------------
                                     Numlockx
         -------------------------------------------------------------------------
             "
-        yay -S --noconfirm --needed numlockx
-        echo "numlockx on" | sudo tee /etc/X11/xinit/xinitrc
-        echo "[General]" | sudo tee /etc/sddm.conf
-        echo "Numlock=on" | sudo tee -a /etc/sddm.conf
+            yay -S  --noconfirm --needed numlockx
+            echo "numlockx on" | sudo tee /etc/X11/xinit/xinitrc
+            echo "[General]" | sudo tee /etc/sddm.conf
+            echo "Numlock=on" | sudo tee -a /etc/sddm.conf
         ;;
-    0) ;;
-
-    *)
-        echo "Please only use 1 or 0"
-        numlock
+        0)
+        ;;
+        *)
+            echo "Please only use 1 or 0"
+            numlock
         ;;
     esac
 }
 
 installtype() {
     echo -ne "
-        Do you want to install all the programs?
+        Do you want to install all the Programms?
     "
     echo -ne "
         1) Yes
@@ -42,30 +42,34 @@ installtype() {
     Choose an option:  "
     read -r install_type
     case ${install_type} in
-    1)
-        # install yay pkgs
-        while read -r line; do yay -S --noconfirm --needed "$line"; done <./../pkgs/aur.txt
-        # install flatpaks
-        flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-        while read -r line; do flatpak install -y --noninteractive flathub "$line"; done <./../pkgs/flatpaks.txt
-        #give flatpak access to themes
-        sudo flatpak override --filesystem=~/.themes
+        1)
+            # veracrypt + wine
+            yay -S --noconfirm veracrypt winehq
+            # install yay pkgs
+            while read -r line; do yay -S --noconfirm --needed "$line"; done <./../pkgs/pkgs.txt
+            # install flatpaks
+            flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+            while read -r line; do flatpak install -y --noninteractive flathub "$line"; done <./../pkgs/flatpaks.txt
+            #give flatpak access to themes
+            sudo flatpak override --filesystem=~/.themes
         ;;
-    2)
-        flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-        while read -r line; do flatpak install -y --noninteractive flathub "$line"; done <./../pkgs/flatpaks.txt
-        #give flatpak access to themes
-        sudo flatpak override --filesystem=~/.themes
+        2)
+            flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+            while read -r line; do flatpak install -y --noninteractive flathub "$line"; done <./../pkgs/flatpaks.txt
+            #give flatpak access to themes
+            sudo flatpak override --filesystem=~/.themes
         ;;
-    3)
-        # cat ${SCRIPT_DIR}/pkgs/aur-pkgs.txt | while read line
-        while read -r line; do yay -S --noconfirm --needed "$line"; done <./../pkgs/aur.txt
+        3)
+            # cat ${SCRIPT_DIR}/pkgs/aur-pkgs.txt | while read line
+            while read -r line; do yay -S --noconfirm --needed "$line"; done <./../pkgs/pkgs.txt
         ;;
-    0) ;;
-
-    *)
-        echo "Please only the number 0 to 3"
-        installtype
+        0) ;;
+        *)
+            echo "Please only the number 0 to 3"
+            installtype
         ;;
     esac
 }
+
+numlock
+installtype
