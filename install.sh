@@ -56,7 +56,7 @@ fonts(){
     wget -qi -
     sudo -s unzip Meslo.zip -d /usr/share/fonts
     rm ./Meslo.zip
-
+    
     sudo -s curl -s https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest |
     grep "FiraCode.zip" |
     cut -d : -f 2,3 |
@@ -205,10 +205,8 @@ hyprland(){
         fi
         elif [ -x "$(command -v dnf)" ];then
         sudo dnf -y upgrade --refresh
-        bash ${SCRIPT_DIR}/scripts/fedora.sh
         elif [ -x "$(command -v apt-get)" ];then
         sudo apt-get -y update && sudo apt-get -y upgrade
-        bash ${SCRIPT_DIR}/scripts/debian.sh
     else
         echo 'This Distro is not supported!'
     fi
