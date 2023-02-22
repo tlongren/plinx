@@ -25,14 +25,13 @@ sys (){
             yay -Syu --noconfirm
             bash ${SCRIPT_DIR}/scripts/arch.sh
         else
-            # install yay (AUR helper)
-            sudo pacman -Syu --noconfirm
-            sudo pacman -S --noconfirm --needed git base-devel
-            git clone https://aur.archlinux.org/yay-bin.git
-            cd yay-bin
+            # install paru (AUR helper)
+            sudo pacman -S --needed base-devel
+            git clone https://aur.archlinux.org/paru.git
+            cd paru
             makepkg -si
             # go on with the normal script
-            yay -Syu --noconfirm
+            paru -Syu --noconfirm
             bash ${SCRIPT_DIR}/scripts/arch.sh
         fi
         elif [ -x "$(command -v dnf)" ];then
